@@ -1,9 +1,28 @@
-{% if latest_question_list %}
-    <ul>
-        {% for question in latest_question_list %}
-            <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls available.</p>
-{% endif %}
+<head>
+  <title> PolZapp: Quelle est votre opinion ? </title>
+
+  {% load static %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/mdl1.3.0/material.min.css' %}" />
+  <script src="{% static 'polls/mdl1.3.0/material.min.js' %}"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}"
+</head>
+
+<html>
+  <h1 class='logo'> PolZapp </h1>
+  <h3> Quelle est votre opinion ? </h3>
+
+  {% if latest_question_list %}
+      <ul class='mdl-list'>
+          {% for question in latest_question_list %}
+              <li class='mdl-list__item'>
+                  <i class="material-icons mdl-list__item-icon listicon">poll</i>
+                  <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
+              </li>
+          {% endfor %}
+      </ul>
+  {% else %}
+      <p>No polls available.</p>
+  {% endif %}
+</html>

@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Krona+One|Roboto+Condensed');
+
+html{
+  width: 100%;
+  padding: 30px;
+}
+
+li a {
+  color: green;
+  text-decoration: none;
+}
+
+h1, h2, h3 {
+  color: navyblue;
+  font-family: 'Roboto Condensed', 'Helvetica', 'Arial', sans-serif;
+}
+
+p, a, h4, h5, h6 {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+}
+
+.logo {
+  font-weight: 700;
+  font-family: 'Krona One', 'Roboto Condensed', 'Helvetica', 'Arial', sans-serif;
+}
+
+.listicon {
+  margin: 10px;
+}
