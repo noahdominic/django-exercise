@@ -1,14 +1,34 @@
-<h1>{{ question.question_text }}</h1>
+<head>
+  <title> PolZapp: Quelle est votre opinion ? </title>
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>
-{% endif %}
+  {% load static %}
 
-<form action="{% url 'polls:vote' question.id %}" method="post">
-{% csrf_token %}
-{% for choice in question.choice_set.all %}
-  <input type='radio' name='choice' id='choice{{ forloop.counter }}' value='{{ choice.id }}'/>
-  <label for='choice{{ forloop.counter }}'>{{ choice.choice_text }}</label>
-  <br/>
-{% endfor %}
-<input type='submit' value='Vote' />
-</form>
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/mdl1.3.0/material.min.css' %}" />
+  <script src="{% static 'polls/mdl1.3.0/material.min.js' %}"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'sesshandlr/styles.css' %}"/>
+</head>
+
+<body class="sess-body">
+  <div class="site-container">
+    <h3>You're answering</h3>
+    <h1>{{ question.question_text }}</h1>
+
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+
+    <form action="{% url 'polls:vote' question.id %}" method="post">
+    {% csrf_token %}
+    {% for choice in question.choice_set.all %}
+      <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for='choice{{ forloop.counter }}' style="margin: 8px 15px">
+        <input class="mdl-radio__button" type='radio' name='choice' id='choice{{ forloop.counter }}' value='{{ choice.id }}'/>
+        <span class="mdl-radio__label"><p>{{ choice.choice_text }}</p></span>
+      </label>
+      <br/>
+    {% endfor %}
+    <br/>
+    <input style="margin-top: 20px;" class="mdl-button mdj-js-button mdl-button--raised mdl-button--primary" type='submit' value='Vote' />
+    </form>
+  </div>
+</body>

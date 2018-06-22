@@ -10,39 +10,39 @@
   <link rel="stylesheet" type="text/css" href="{% static 'sesshandlr/styles.css' %}"/>
 </head>
 
-<body>
+<body class="sess-body">
   <div class = 'site-container'>
-    {% if form.errors %}
-    <p>Your username and password didn't match. Please try again.</p>
-    {% endif %}
-
-    {% if next %}
-        {% if user.is_authenticated %}
-        <p>Your account doesn't have access to this page. To proceed,
-        please login with an account that has access.</p>
-        {% else %}
-        <p>Please login to see this page.</p>
-        {% endif %}
-    {% endif %}
-    <h1>
-
+    <h1 class='logo'> Lorem.Ipsum </h1>
+    <h3 class='subtitle'> Share your opinions </h3>
     <form method="post" action="{% url 'login' %}">
+      {% if form.errors %}
+      <p style="color: red">Your username and password didn't match. Please try again.</p>
+      {% endif %}
+
+      {% if next %}
+          {% if user.is_authenticated %}
+          <p style="color: red">Your account doesn't have access to this page. To proceed,
+          please login with an account that has access.</p>
+          {% else %}
+          <p style="color: red">Please login to see this page.</p>
+          {% endif %}
+      {% endif %}
       {% csrf_token %}
       <div class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>
         <input class="mdl-textfield__input" type="text" name="username" required="" id="id_username">
         <label class="mdl-textfield__label" for="id_username">Username</label>
       </div>
-    <br/>
+      <br/>
       <div class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>
         <input class="mdl-textfield__input" type="password" name="password" required="" id="id_password">
         <label class="mdl-textfield__label" for="id_password">Password</label>
       </div>
 
-      <div>
-        <input class="mdl-button" type="submit" value="login" />
+      <div style='margin-top: 20px;'>
+        <input class="mdl-button mdj-js-button mdl-button--raised mdl-button--primary" type="submit" value="login" />
+         <a href='{% url "signup" %}' class="mdl-button mdl-js-button mdl-button--accent">Sign Up </a>
         <input type="hidden" name="next" value="{{ next }}" />
       </div>
     </form>
-    <p><a href='{% url "signup" %}'>Sign Up </a></p>
   <div>
 </body>

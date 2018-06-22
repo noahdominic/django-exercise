@@ -1,8 +1,26 @@
+.sess-body {
+  background-color: #f9f9f9;
+}
+
+.subtitle{
+  line-height: 0.1em;
+}
+
 .site-container {
-margin-left: 100px;
+  margin: auto;
+  margin-top: 100px;
+  max-width: 700px;
+  padding: 50px;
+  padding-bottom: 90px;
+  box-shadow: 0px 3px 8px 2px #dddddd;
+  background-color: #ffffff;
 }
 
 .mdl-textfield__label, .mdl-textfield__input {
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   letter-spacing: 2px;
+}
+
+.force-roboto{
+  font-family: Roboto, sans-serif;
 }
