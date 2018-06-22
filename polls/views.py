@@ -6,6 +6,8 @@ from django.utils import timezone
 from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from django.contrib.auth.decorators import login_required
+
 from .models import Question, Choice
 
 
@@ -22,16 +24,18 @@ class IndexView(LoginRequiredMixin, generic.ListView):
         """
         return Question.objects.filter(pub_date__lte=timezone.now())
 
-class DetailView(generic.DetailView):
+class DetailView(LoginRequiredMixin, generic.DetailView):
+    login_url = "../../accounts/login"
     model = Question
     template_name = 'polls/detail.html'
 
 
-class ResultsView(generic.DetailView):
+class ResultsView(LoginRequiredMixin, generic.DetailView):
+    login_url = "../../../accounts/login"
     model = Question
     template_name = 'polls/results.html'
 
-
+@login_required
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     try:

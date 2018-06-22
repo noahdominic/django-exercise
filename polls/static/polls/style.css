@@ -12,7 +12,7 @@ li a {
 
 h1, h2, h3 {
   color: navyblue;
-  font-family: 'Roboto Condensed', 'Helvetica', 'Arial', sans-serif;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 }
 
 p, a, h4, h5, h6 {
@@ -21,7 +21,7 @@ p, a, h4, h5, h6 {
 
 .logo {
   font-weight: 700;
-  font-family: 'Krona One', 'Roboto Condensed', 'Helvetica', 'Arial', sans-serif;
+  font-family: 'Krona One', 'Helvetica', 'Arial', sans-serif;
 }
 
 .listicon {

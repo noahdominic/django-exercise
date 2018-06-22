@@ -1,33 +1,48 @@
-{% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %}
+<head>
+  <title> PolZapp: Login </title>
 
-{% if next %}
-    {% if user.is_authenticated %}
-    <p>Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
-    {% else %}
-    <p>Please login to see this page.</p>
+  {% load static %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/mdl1.3.0/material.min.css' %}" />
+  <script src="{% static 'polls/mdl1.3.0/material.min.js' %}"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'sesshandlr/styles.css' %}"/>
+</head>
+
+<body>
+  <div class = 'site-container'>
+    {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
     {% endif %}
-{% endif %}
 
-<form method="post" action="{% url 'login' %}">
-{% csrf_token %}
+    {% if next %}
+        {% if user.is_authenticated %}
+        <p>Your account doesn't have access to this page. To proceed,
+        please login with an account that has access.</p>
+        {% else %}
+        <p>Please login to see this page.</p>
+        {% endif %}
+    {% endif %}
+    <h1>
 
-<div>
-  <td>{{ form.username.label_tag }}</td>
-  <td>{{ form.username }}</td>
-</div>
-<div>
-  <td>{{ form.password.label_tag }}</td>
-  <td>{{ form.password }}</td>
-</div>
+    <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      <div class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>
+        <input class="mdl-textfield__input" type="text" name="username" required="" id="id_username">
+        <label class="mdl-textfield__label" for="id_username">Username</label>
+      </div>
+    <br/>
+      <div class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>
+        <input class="mdl-textfield__input" type="password" name="password" required="" id="id_password">
+        <label class="mdl-textfield__label" for="id_password">Password</label>
+      </div>
 
-<div>
-  <input type="submit" value="login" />
-  <input type="hidden" name="next" value="{{ next }}" />
-</div>
-</form>
-
-{# Assumes you setup the password_reset view in your URLconf #}
-<p><a href='{% url "signup" %}'>Sign Up </a></p>
+      <div>
+        <input class="mdl-button" type="submit" value="login" />
+        <input type="hidden" name="next" value="{{ next }}" />
+      </div>
+    </form>
+    <p><a href='{% url "signup" %}'>Sign Up </a></p>
+  <div>
+</body>
