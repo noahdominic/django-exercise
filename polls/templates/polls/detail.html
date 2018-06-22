@@ -12,6 +12,7 @@
 
 <body class="sess-body">
   <div class="site-container">
+
     <h3>You're answering</h3>
     <h1>{{ question.question_text }}</h1>
 
@@ -29,6 +30,10 @@
     {% endfor %}
     <br/>
     <input style="margin-top: 20px;" class="mdl-button mdj-js-button mdl-button--raised mdl-button--primary" type='submit' value='Vote' />
+
+    <br/>
     </form>
+    <a href="{% url 'polls:index' %}"  style="text-align: center">Go Back
+    </a>
   </div>
 </body>

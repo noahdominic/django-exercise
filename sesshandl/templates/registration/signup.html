@@ -1,17 +1,35 @@
-<h2>Sign up</h2>
-<form method="post">
-  {% csrf_token %}
-  {% for field in form %}
-    <p>
-      {{ field.label_tag }}<br>
-      {{ field }}
-      {% if field.help_text %}
-        <small style="color: grey">{{ field.help_text }}</small>
-      {% endif %}
-      {% for error in field.errors %}
-        <p style="color: red">{{ error }}</p>
-      {% endfor %}
-    </p>
-  {% endfor %}
-  <button type="submit">Sign up</button>
-</form>
+<head>
+  <title> PolZapp: Quelle est votre opinion ? </title>
+
+  {% load static %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/mdl1.3.0/material.min.css' %}" />
+  <script src="{% static 'polls/mdl1.3.0/material.min.js' %}"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'sesshandlr/styles.css' %}"/>
+</head>
+
+<body class="sess-body">
+  <div class="site-container"/>
+  <h2>Sign up</h2>
+  <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <p>
+        {{ field.label_tag }} <br/>
+        {{ field }}
+        <br/>
+        {% if field.help_text %}
+
+          <small style="color: grey">{{ field.help_text|safe }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+    {% endfor %}
+    <button style="margin-top: 20px;" class="mdl-button mdj-js-button mdl-button--raised mdl-button--primary" type="submit">Sign up</button>
+  </form>
+  </div>
+</body>

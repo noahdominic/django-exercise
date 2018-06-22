@@ -1,10 +1,31 @@
-<h1>{{ question.question_text }}</h1>
+<head>
+  <title> PolZapp: Quelle est votre opinion ? </title>
 
-<ul>
-{% for choice in question.choice_set.all %}
-    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
-{% endfor %}
-</ul>
+  {% load static %}
 
-<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
-<a href="{% url 'polls:index' %}">Look at other polls</a>
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/mdl1.3.0/material.min.css' %}" />
+  <script src="{% static 'polls/mdl1.3.0/material.min.js' %}"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'sesshandlr/styles.css' %}"/>
+</head>
+
+<body class="sess-body">
+  <div class="site-container">
+    <h3>See what others answered for</h3>
+    <h1>{{ question.question_text }}</h1>
+
+    <div style='display: table; width:100%; margin-left: 20px'>
+      {% for choice in question.choice_set.all %}
+          <div style='display: table-row'>
+            <div style='display: table-cell; max-width: 150px'><p>{{ choice.choice_text }}</p></div>
+            <div style='display: table-cell; width: auto'><p>{{ choice.votes }} vote{{ choice.votes|pluralize }}</p></div>
+          </div>
+      {% endfor %}
+    </div>
+
+    <a style="margin-top: 20px;" class="mdl-button mdj-js-button mdl-button--raised mdl-button--primary" href="{% url 'polls:detail' question.id %}">Vote again?</a>
+    <br/>
+    <a style="margin-top: 10px;" class="mdl-button mdj-js-button mdl-button--raised mdl-button--accent" href="{% url 'polls:index' %}">Look at other polls</a>
+  </div>
+</body>
