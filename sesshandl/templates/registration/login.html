@@ -1,9 +1,5 @@
-
-
-{% block content %}
-
 {% if form.errors %}
-se_generic.html" %} <p>Your username and password didn't match. Please try again.</p>
+<p>Your username and password didn't match. Please try again.</p>
 {% endif %}
 
 {% if next %}
@@ -34,6 +30,4 @@ se_generic.html" %} <p>Your username and password didn't match. Please try again
 </form>
 
 {# Assumes you setup the password_reset view in your URLconf #}
-<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
-
-{% endblock %}
+<p><a href='{% url "signup" %}'>Sign Up </a></p>

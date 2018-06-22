@@ -4,11 +4,14 @@ from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 from django.contrib.auth import logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Question, Choice
 
 
-class IndexView(generic.ListView):
+class IndexView(LoginRequiredMixin, generic.ListView):
+    login_url = '../accounts/login/'
+    redirect_field_name = 'redirect_to'
     template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'
 
